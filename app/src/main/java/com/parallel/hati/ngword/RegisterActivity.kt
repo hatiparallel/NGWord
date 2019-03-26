@@ -32,8 +32,8 @@ class RegisterActivity : AppCompatActivity() {
                 words[now] = wordEditText.getText().toString()
             }
 
-            Log.d("name", names[0])
-            Log.d("word", words[0])
+            Log.d("name", names[now])
+            Log.d("word", words[now])
 
             Toast.makeText(applicationContext, "ok", Toast.LENGTH_LONG).show()
 

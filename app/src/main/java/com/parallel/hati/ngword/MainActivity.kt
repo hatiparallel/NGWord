@@ -40,10 +40,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.start).setOnClickListener {
+            //val initWords: Array<String> = WordsDecider.chooseDefaultWords(count)
             intent = Intent(this, RegisterActivity::class.java)
             intent.putExtra("count", count)
             intent.putExtra("names", Array<String>(count, {"プレイヤー${it}" }))
-            intent.putExtra("words", Array<String>(count, { "salad" }))
+            intent.putExtra("words", WordsDecider.chooseDefaultWords(count))
             startActivity(intent)
         }
     }
