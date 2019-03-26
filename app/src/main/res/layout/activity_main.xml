@@ -15,6 +15,13 @@
         android:textSize="48sp"
         android:layout_gravity="center_horizontal"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="人数を選択してから「ゲーム開始」を押してください。"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

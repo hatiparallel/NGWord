@@ -18,7 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.start).setOnClickListener {
             Toast.makeText(applicationContext, "start", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, RegisterActivity::class.java))
+            intent = Intent(this, RegisterActivity::class.java)
+            intent.putExtra("count", 3)
+            startActivity(intent)
         }
     }
 }
