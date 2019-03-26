@@ -20,6 +20,7 @@
         android:textSize="16sp"/>
 
     <EditText
+        android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -43,6 +44,7 @@
         空白の場合、デフォルトの単語からランダムで選ばれます。"/>
 
     <EditText
+        android:id="@+id/word_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"

@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.start).setOnClickListener {
             intent = Intent(this, RegisterActivity::class.java)
             intent.putExtra("count", count)
+            intent.putExtra("names", Array<String>(count, { "プレイヤー${count}" }))
+            intent.putExtra("words", Array<String>(count, { "salad" }))
             startActivity(intent)
         }
     }
