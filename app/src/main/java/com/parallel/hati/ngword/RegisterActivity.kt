@@ -36,9 +36,15 @@ class RegisterActivity : AppCompatActivity() {
             Log.d("word", words[0])
 
             Toast.makeText(applicationContext, "ok", Toast.LENGTH_LONG).show()
-            intent = Intent(this, RegisterActivity::class.java)
+
+            if (now == count - 1) {
+                intent = Intent(this, ShowActivity::class.java)
+            } else {
+                intent = Intent(this, RegisterActivity::class.java)
+            }
+
             intent.putExtra("count", count)
-            intent.putExtra("now", now + 1)
+            intent.putExtra("now", (now + 1)%count)
             intent.putExtra("names", names)
             intent.putExtra("words", words)
             startActivity(intent)

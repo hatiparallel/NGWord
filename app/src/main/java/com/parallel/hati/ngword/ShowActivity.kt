@@ -11,12 +11,18 @@ class ShowActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_show)
 
-        val name_view = findViewById<TextView>(R.id.name)
-        name_view.setText("john")
+        val count = intent.getIntExtra("count", 0)
+        val now = intent.getIntExtra("now", 0)
 
-        val word_view = findViewById<TextView>(R.id.word)
-        word_view.setText("salad")
+        val names = intent.getStringArrayExtra("names")
+        val words = intent.getStringArrayExtra("words")
+
+        val nameView = findViewById<TextView>(R.id.name)
+        nameView.setText("john")
+
+        val wordView = findViewById<TextView>(R.id.word)
+        wordView.setText("salad")
     }
 }
