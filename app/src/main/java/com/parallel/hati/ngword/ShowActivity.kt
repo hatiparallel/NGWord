@@ -20,9 +20,18 @@ class ShowActivity : AppCompatActivity() {
         val words = intent.getStringArrayExtra("words")
 
         val nameView = findViewById<TextView>(R.id.name)
-        nameView.setText("john")
+        nameView.setText(names[now])
 
         val wordView = findViewById<TextView>(R.id.word)
-        wordView.setText("salad")
+        wordView.setText(words[now])
+
+        findViewById<Button>(R.id.next_button).setOnClickListener {
+            intent = Intent(this, ShowActivity::class.java)
+            intent.putExtra("count", count)
+            intent.putExtra("now", (now + 1)%count)
+            intent.putExtra("names", names)
+            intent.putExtra("words", words)
+            startActivity(intent)
+        }
     }
 }
