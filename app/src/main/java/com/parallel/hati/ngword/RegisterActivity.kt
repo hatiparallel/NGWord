@@ -39,6 +39,7 @@ class RegisterActivity : AppCompatActivity() {
 
             if (now == count - 1) {
                 intent = Intent(this, ShowActivity::class.java)
+                intent.putExtra("shuffle", WordsDecider.shuffleNumber(count, count));
             } else {
                 intent = Intent(this, RegisterActivity::class.java)
             }
