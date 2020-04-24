@@ -22,7 +22,7 @@ class PrepareActivity : AppCompatActivity() {
         val playing = intent.getBooleanExtra("playing", false)
 
         val messageView = findViewById<TextView>(R.id.message)
-        messageView.setText("${names[now]}さんのNGワードを表示します.\n準備ができたらOKを押してください．")
+        messageView.setText("${names[now]}さんのNGワードを\n表示します.\n準備ができたら\nOKを押してください．")
 
         findViewById<Button>(R.id.next_button).setOnClickListener {
             intent = Intent(this, ShowActivity::class.java)
