@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var count = 3
-        val count_view = findViewById< TextView>(R.id.count_view)
+        val count_view = findViewById<TextView>(R.id.count_view)
 
         findViewById<ImageButton>(R.id.decrease_button).setOnClickListener {
             if (count > 2) {
@@ -42,9 +42,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.start).setOnClickListener {
             //val initWords: Array<String> = WordsDecider.chooseDefaultWords(count)
             intent = Intent(this, RegisterActivity::class.java)
-            intent.putExtra("count", count)
+            intent.putExtra("number", count)
             intent.putExtra("names", Array<String>(count, {"プレイヤー${it}" }))
             intent.putExtra("words", WordsDecider.chooseDefaultWords(count))
+            intent.putExtra("now", 0)
             startActivity(intent)
         }
     }

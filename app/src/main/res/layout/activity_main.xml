@@ -6,27 +6,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="NGワード"
         android:textSize="48sp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="人数を選択してから「ゲーム開始」を押してください。"
+        android:text="人数を選択してから\n「ゲーム開始」を押してください。"
         android:textSize="24sp"
+        android:textColor="@color/black"
+        android:gravity="center"
         android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
         <ImageButton
             android:id="@+id/decrease_button"
@@ -40,8 +50,9 @@
             android:id="@+id/count_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3人"
+            android:text="  3人  "
             android:textSize="32sp"
+            android:textColor="@color/black"
             android:textStyle="bold"/>
 
         <ImageButton
@@ -57,16 +68,22 @@
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ゲーム開始"
+        android:text=" ゲーム開始 "
         android:textSize="32sp"
-        android:layout_gravity="center_horizontal"/>
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/howto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="遊び方"
+        android:text=" 遊び方 "
         android:textSize="32sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

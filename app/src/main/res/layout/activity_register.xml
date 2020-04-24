@@ -11,37 +11,52 @@
         android:layout_height="wrap_content"
         android:text="プレイヤー名"
         android:textSize="32sp"
+        android:textColor="@color/black"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自分の名前を入力してください。空白の場合、「プレイヤー」と表示されます。"
-        android:textSize="16sp"/>
+        android:text="自分の名前を入力してください。"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
+        android:textColor="@color/black"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/caution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/invisible"
+        android:text="プレイヤー名の入力は必須です。"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="NGワード"
+        android:textColor="@color/black"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="NGワードに指定する文字を入力してください。
-        入力したワードがランダムで自分以外の誰かのNGワードになります。
-        空白の場合、デフォルトの単語からランダムで選ばれます。"/>
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:text="NGワードに指定する単語を入力してください。\n入力したものが自分以外の誰かのNGワードになります。\n空白の場合、デフォルトの単語からランダムで選ばれます。"/>
 
     <EditText
         android:id="@+id/word_edit_text"
@@ -55,7 +70,10 @@
         android:id="@+id/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:shadowColor="@color/green"
         android:textSize="24sp"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
         android:text="OK"
         android:layout_gravity="center_horizontal"/>
 
