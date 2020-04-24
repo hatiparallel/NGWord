@@ -28,6 +28,9 @@
         <activity
             android:name=".PrepareActivity" />
 
+        <activity
+            android:name=".FinishActivity" />
+
     </application>
 
 </manifest>

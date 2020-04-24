@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             //val initWords: Array<String> = WordsDecider.chooseDefaultWords(count)
             intent = Intent(this, RegisterActivity::class.java)
             intent.putExtra("number", count)
-            intent.putExtra("names", Array<String>(count, {"プレイヤー${it}" }))
+            intent.putExtra("names", Array<String>(count, { "" }))
             intent.putExtra("words", WordsDecider.chooseDefaultWords(count))
             intent.putExtra("now", 0)
             startActivity(intent)

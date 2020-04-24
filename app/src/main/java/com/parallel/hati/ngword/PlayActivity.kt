@@ -3,8 +3,10 @@ package com.parallel.hati.ngword
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.ArrayAdapter
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.Button
 import android.widget.ListView
+
 
 class PlayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,17 +20,23 @@ class PlayActivity : AppCompatActivity() {
         val words = intent.getStringArrayExtra("words")
 
         val listView = findViewById(R.id.member_list_view) as ListView
-        val dataArray = names
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataArray)
+        val adapter = PlayAdapter(this, names)
         listView.adapter = adapter
-
-        listView.setOnItemClickListener { adapterView, view, position, id ->
-            val memberChosen = position
+        listView.onItemClickListener = OnItemClickListener { parent, view, position, id ->
             intent = Intent(this, ShowActivity::class.java)
             intent.putExtra("shuffle", shuffle)
             intent.putExtra("number", number)
             intent.putExtra("now", position)
             intent.putExtra("playing", true)
+            intent.putExtra("names", names)
+            intent.putExtra("words", words)
+            startActivity(intent)
+        }
+
+
+        findViewById<Button>(R.id.finish_button).setOnClickListener {
+            intent = Intent(this, FinishActivity::class.java)
+            intent.putExtra("number", number)
             intent.putExtra("names", names)
             intent.putExtra("words", words)
             startActivity(intent)

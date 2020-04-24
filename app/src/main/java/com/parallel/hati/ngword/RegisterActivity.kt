@@ -26,6 +26,8 @@ class RegisterActivity : AppCompatActivity() {
         val wordEditText = findViewById<EditText>(R.id.word_edit_text)
         val caution = findViewById<TextView>(R.id.caution)
 
+        nameEditText.setText(names[now])
+
         findViewById<Button>(R.id.ok).setOnClickListener {
             if (nameEditText.getText().isNotEmpty()) {
                 names[now] = nameEditText.getText().toString()
