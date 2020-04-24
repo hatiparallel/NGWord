@@ -18,8 +18,7 @@ class FinishActivity : AppCompatActivity() {
         val words = intent.getStringArrayExtra("words")
 
         val listView = findViewById(R.id.member_list_view) as ListView
-        val dataArray = names
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataArray)
+        val adapter = FinishAdapter(this, names, words)
         listView.adapter = adapter
 
         findViewById<Button>(R.id.restart_button).setOnClickListener {
