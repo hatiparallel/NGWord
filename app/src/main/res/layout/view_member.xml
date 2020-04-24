@@ -14,9 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:gravity="center_horizontal"
         android:layout_weight="1"
-        android:textSize="18sp"
-        tools:text="Aさん" />
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        tools:text="読み込み中" />
 
     <Button
         android:id="@+id/user_button"
@@ -25,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="18dp"
+        android:textSize="24sp"
         android:textColor="@color/white"
         android:text=" 確認 " />
 
