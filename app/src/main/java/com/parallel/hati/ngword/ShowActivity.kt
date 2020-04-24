@@ -15,12 +15,11 @@ class ShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show)
 
         val shuffle : IntArray = intent.getIntArrayExtra("shuffle")
-
         val number = intent.getIntExtra("number", 0)
         val now = intent.getIntExtra("now", 0)
-
         val names = intent.getStringArrayExtra("names")
         val words = intent.getStringArrayExtra("words")
+        val playing = intent.getBooleanExtra("playing", false)
 
         val nameView = findViewById<TextView>(R.id.name)
         nameView.setText(names[now])
@@ -29,7 +28,11 @@ class ShowActivity : AppCompatActivity() {
         wordView.setText(words[shuffle[now]])
 
         findViewById<Button>(R.id.next_button).setOnClickListener {
-            intent = Intent(this, ShowActivity::class.java)
+            if (playing || now == number - 1) {
+                intent = Intent(this, PlayActivity::class.java)
+            } else{
+                intent = Intent(this, ShowActivity::class.java)
+            }
             intent.putExtra("number", number)
             intent.putExtra("now", (now + 1) % number)
             intent.putExtra("names", names)

@@ -22,6 +22,9 @@
         <activity
             android:name=".ShowActivity" />
 
+        <activity
+            android:name=".PlayActivity" />
+
     </application>
 
 </manifest>
