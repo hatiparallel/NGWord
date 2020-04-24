@@ -4,7 +4,9 @@ import java.util.*
 
 class WordsDecider {
     companion object {
-        val defaultWords: List<String> = listOf("男", "女", "目", "机", "椅子", "トイレ")
+        val defaultWords: List<String> = listOf("男", "女", "目", "髪", "机", "椅子", "トイレ",
+        "晴れ", "雨", "車", "自転車", "電車", "鍵", "電話", "18", "20", "100", "世界", "日本", "学校",
+                "夢", "水", "朝", "昼", "夜", "眼鏡", "財布")
 
         public fun shuffleNumber(resultSize: Int, arrSize: Int): IntArray {
             val arr = Array<Int>(arrSize, { it }).toMutableList()
