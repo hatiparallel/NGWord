@@ -18,6 +18,7 @@ class WordsDecider {
                         val changed = rand.nextInt(arrSize - 1)
                         result.add(result[changed])
                         result[changed] = i
+                        break
                     }
                     arr.removeAt(0)
                     removed = true

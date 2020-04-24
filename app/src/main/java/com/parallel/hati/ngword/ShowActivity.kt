@@ -31,7 +31,7 @@ class ShowActivity : AppCompatActivity() {
             if (playing || now == number - 1) {
                 intent = Intent(this, PlayActivity::class.java)
             } else{
-                intent = Intent(this, ShowActivity::class.java)
+                intent = Intent(this, PrepareActivity::class.java)
             }
             intent.putExtra("number", number)
             intent.putExtra("now", (now + 1) % number)

@@ -45,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "ok", Toast.LENGTH_LONG).show()
 
             if (now == number - 1) {
-                intent = Intent(this, ShowActivity::class.java)
+                intent = Intent(this, PrepareActivity::class.java)
                 intent.putExtra("shuffle", WordsDecider.shuffleNumber(number, number));
             } else {
                 intent = Intent(this, RegisterActivity::class.java)
