@@ -50,7 +50,7 @@
             android:id="@+id/count_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="  3人  "
+            android:text=" 3人 "
             android:textSize="32sp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
@@ -77,7 +77,7 @@
         android:layout_marginBottom="8dp"/>
 
     <Button
-        android:id="@+id/howto"
+        android:id="@+id/howto_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" 遊び方 "

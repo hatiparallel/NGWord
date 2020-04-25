@@ -12,7 +12,7 @@
         android:id="@+id/user_name_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:textSize="18sp"
         android:textColor="@color/black"
         tools:text="読み込み中" />
@@ -21,7 +21,7 @@
         android:id="@+id/word_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:textSize="24sp"
         android:textColor="@color/black"
         tools:text="読み込み中" />

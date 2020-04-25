@@ -36,6 +36,7 @@ class PlayActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.finish_button).setOnClickListener {
             intent = Intent(this, FinishActivity::class.java)
+            intent.putExtra("shuffle", shuffle)
             intent.putExtra("number", number)
             intent.putExtra("names", names)
             intent.putExtra("words", words)

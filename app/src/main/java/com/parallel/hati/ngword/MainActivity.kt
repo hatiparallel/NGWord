@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.decrease_button).setOnClickListener {
             if (count > 2) {
                 count -= 1
-                count_view.setText("${count}人")
+                count_view.setText(" ${count}人 ")
             } else {
                 Toast.makeText(applicationContext, "人数は最小で2人までです", Toast.LENGTH_LONG).show()
             }
@@ -29,14 +29,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.increase_button).setOnClickListener {
             if (count < 16) {
                 count += 1
-                count_view.setText("${count}人")
+                count_view.setText(" ${count}人 ")
             } else {
                 Toast.makeText(applicationContext, "人数は最大で16人までです", Toast.LENGTH_LONG).show()
             }
         }
 
-        findViewById<Button>(R.id.howto).setOnClickListener {
-            Toast.makeText(applicationContext, "hello", Toast.LENGTH_SHORT).show()
+        findViewById<Button>(R.id.howto_button).setOnClickListener {
+            intent = Intent(this, HowToActivity::class.java)
+            startActivity(intent)
         }
 
         findViewById<Button>(R.id.start).setOnClickListener {

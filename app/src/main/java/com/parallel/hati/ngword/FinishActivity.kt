@@ -13,12 +13,12 @@ class FinishActivity : AppCompatActivity() {
         setContentView(R.layout.activity_finish)
 
         val number = intent.getIntExtra("number", 0)
-        val now = intent.getIntExtra("now", 0)
+        val shuffle = intent.getIntArrayExtra("shuffle")
         val names = intent.getStringArrayExtra("names")
         val words = intent.getStringArrayExtra("words")
 
         val listView = findViewById(R.id.member_list_view) as ListView
-        val adapter = FinishAdapter(this, names, words)
+        val adapter = FinishAdapter(this, names, words, shuffle)
         listView.adapter = adapter
 
         findViewById<Button>(R.id.restart_button).setOnClickListener {

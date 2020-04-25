@@ -31,6 +31,9 @@
         <activity
             android:name=".FinishActivity" />
 
+        <activity
+            android:name=".HowToActivity" />
+
     </application>
 
 </manifest>
