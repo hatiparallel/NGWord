@@ -39,7 +39,7 @@
         android:layout_marginBottom="16dp">
 
         <ImageButton
-            android:id="@+id/decrease_button"
+            android:id="@+id/people_decrease_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"
@@ -48,16 +48,52 @@
             android:contentDescription="@string/decrease_button"/>
 
         <TextView
-            android:id="@+id/count_view"
+            android:id="@+id/people_count_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/default_count"
+            android:text="@string/default_people_count"
             android:textSize="32sp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
         <ImageButton
-            android:id="@+id/increase_button"
+            android:id="@+id/people_increase_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp"
+            android:background="@null"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/increase_button" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/words_decrease_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"
+            android:background="@null"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/decrease_button"/>
+
+        <TextView
+            android:id="@+id/words_count_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_words_count"
+            android:textSize="32sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/words_increase_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp"

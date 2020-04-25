@@ -14,27 +14,51 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var count = 3
-        val count_view = findViewById<TextView>(R.id.count_view)
+        var people_count = 3
+        val people_count_view = findViewById<TextView>(R.id.people_count_view)
 
-        val count_min = 2
-        val count_max = 16
+        val people_count_min = 2
+        val people_count_max = 8
 
-        findViewById<ImageButton>(R.id.decrease_button).setOnClickListener {
-            if (count > count_min) {
-                count -= 1
-                count_view.setText(" ${count}人 ")
+        var words_count = 1
+        val words_count_view = findViewById<TextView>(R.id.words_count_view)
+
+        val words_count_min = 1
+        val words_count_max = 5
+
+        findViewById<ImageButton>(R.id.people_decrease_button).setOnClickListener {
+            if (people_count > people_count_min) {
+                people_count -= 1
+                people_count_view.setText(" ${people_count}人 ")
             } else {
-                Toast.makeText(applicationContext, "人数は最小で${count_min}人までです", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "人数は最小で${people_count_min}人までです", Toast.LENGTH_LONG).show()
             }
         }
 
-        findViewById<ImageButton>(R.id.increase_button).setOnClickListener {
-            if (count < count_max) {
-                count += 1
-                count_view.setText(" ${count}人 ")
+        findViewById<ImageButton>(R.id.people_increase_button).setOnClickListener {
+            if (people_count < people_count_max) {
+                people_count += 1
+                people_count_view.setText(" ${people_count}人 ")
             } else {
-                Toast.makeText(applicationContext, "人数は最大で${count_max}人までです", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "人数は最大で${people_count_max}人までです", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        findViewById<ImageButton>(R.id.words_decrease_button).setOnClickListener {
+            if (words_count > words_count_min) {
+                words_count -= 1
+                words_count_view.setText(" ${words_count}人 ")
+            } else {
+                Toast.makeText(applicationContext, "ワードは最小で${words_count_min}個までです", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        findViewById<ImageButton>(R.id.words_increase_button).setOnClickListener {
+            if (words_count < words_count_max) {
+                words_count += 1
+                words_count_view.setText(" ${words_count}個 ")
+            } else {
+                Toast.makeText(applicationContext, "ワードは最大で${words_count_max}個までです", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -46,9 +70,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.start).setOnClickListener {
             //val initWords: Array<String> = WordsDecider.chooseDefaultWords(count)
             intent = Intent(this, RegisterActivity::class.java)
-            intent.putExtra("number", count)
-            intent.putExtra("names", Array<String>(count, { "" }))
-            intent.putExtra("words", WordsDecider.chooseDefaultWords(count))
+            intent.putExtra("people_count", people_count)
+            intent.putExtra("words_count", words_count)
+            intent.putExtra("namelist", Array<String>(people_count, { "" }))
+            intent.putExtra("wordlist", WordsDecider.chooseDefaultWords(people_count * words_count))
             intent.putExtra("now", 0)
             startActivity(intent)
         }

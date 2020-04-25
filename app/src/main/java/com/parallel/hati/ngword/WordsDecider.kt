@@ -31,11 +31,15 @@ class WordsDecider {
             return result.toIntArray()
         }
 
-        public fun chooseDefaultWords(number: Int): Array<String> {
+        public fun chooseDefaultWords(count: Int): Array<String> {
             val words = defaultWords.toMutableList()
             val rand = Random()
 
-            return Array<String>(number, { words.removeAt(rand.nextInt(words.size)) })
+            return Array<String>(count, { words.removeAt(rand.nextInt(words.size)) })
+        }
+
+        public fun getWord(wordlist: Array<String>, words_count: Int, person: Int, id: Int): String {
+            return wordlist[person*words_count + id]
         }
     }
 }

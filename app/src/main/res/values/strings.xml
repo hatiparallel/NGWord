@@ -10,9 +10,10 @@
 
     <string name="increase_button">" 増やす "</string>
     <string name="decrease_button">" 減らす "</string>
-    <string name="default_count">" 3人 "</string>
+    <string name="default_people_count">" 3人 "</string>
+    <string name="default_words_count">" 1個 "</string>
 
-    <string name="main_description">人数を選択してから\n「ゲーム開始」を押してください．</string>
+    <string name="main_description">人数と単語数を選択してから\n「ゲーム開始」を押してください．</string>
 
     <string name="restart_button">" もう一度 "</string>
     <string name="cleanup_button">" 設定画面に戻る "</string>
