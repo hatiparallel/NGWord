@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="プレイヤー名"
+        android:text="@string/name_main"
         android:textSize="32sp"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal"/>
@@ -17,17 +17,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="自分の名前を入力してください。"
+        android:text="@string/name_detail"
         android:layout_gravity="center_horizontal"
         android:textSize="16sp"
         android:textColor="@color/black"/>
 
     <EditText
+        android:hint="@string/constraint"
         android:id="@+id/name_edit_text"
-        android:layout_marginLeft="48dp"
-        android:layout_marginRight="48dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="10"
         android:textSize="28sp"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal"
@@ -39,7 +41,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="@color/invisible"
-        android:text="プレイヤー名の入力は必須です。"
+        android:text="@string/name_warning"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp"/>
 
@@ -48,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="NGワード"
+        android:text="@string/word_main"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal"/>
 
@@ -58,15 +60,17 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:gravity="center_horizontal"
-        android:text="NGワードに指定する単語を入力してください。\n入力したものが自分以外の誰かのNGワードになります。\n空白の場合、デフォルトの単語からランダムで選ばれます。"/>
+        android:text="@string/word_detail"/>
 
     <EditText
+        android:hint="@string/constraint"
         android:id="@+id/word_edit_text"
-        android:layout_marginLeft="48sp"
-        android:layout_marginRight="48sp"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="28sp"
+        android:maxLength="10"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"/>
 
@@ -78,7 +82,7 @@
         android:textSize="28sp"
         android:textColor="@color/white"
         android:background="@color/colorPrimary"
-        android:text="OK"
+        android:text="@string/ok_button"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

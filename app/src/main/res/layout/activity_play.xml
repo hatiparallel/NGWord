@@ -9,7 +9,7 @@
     <ListView
         android:id="@+id/member_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"/>
 
     <Button
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="終了"
+        android:text="@string/finish_button"
         android:textSize="32sp"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
