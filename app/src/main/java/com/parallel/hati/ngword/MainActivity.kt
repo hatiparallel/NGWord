@@ -17,21 +17,24 @@ class MainActivity : AppCompatActivity() {
         var count = 3
         val count_view = findViewById<TextView>(R.id.count_view)
 
+        val count_min = 2
+        val count_max = 16
+
         findViewById<ImageButton>(R.id.decrease_button).setOnClickListener {
-            if (count > 2) {
+            if (count > count_min) {
                 count -= 1
                 count_view.setText(" ${count}人 ")
             } else {
-                Toast.makeText(applicationContext, "人数は最小で2人までです", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "人数は最小で${count_min}人までです", Toast.LENGTH_LONG).show()
             }
         }
 
         findViewById<ImageButton>(R.id.increase_button).setOnClickListener {
-            if (count < 16) {
+            if (count < count_max) {
                 count += 1
                 count_view.setText(" ${count}人 ")
             } else {
-                Toast.makeText(applicationContext, "人数は最大で16人までです", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "人数は最大で${count_max}人までです", Toast.LENGTH_LONG).show()
             }
         }
 
