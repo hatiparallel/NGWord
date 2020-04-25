@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -39,12 +38,6 @@ class RegisterActivity : AppCompatActivity() {
             if (wordEditText.getText().isNotEmpty()) {
                 words[now] = wordEditText.getText().toString()
             }
-
-            Log.d("name", names[now])
-            Log.d("word", words[now])
-            Log.d("now", now.toString())
-
-            Toast.makeText(applicationContext, "ok", Toast.LENGTH_LONG).show()
 
             if (now == number - 1) {
                 intent = Intent(this, PrepareActivity::class.java)
