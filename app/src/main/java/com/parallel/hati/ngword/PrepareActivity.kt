@@ -17,7 +17,7 @@ class PrepareActivity : AppCompatActivity() {
         val people_count = intent.getIntExtra("people_count", 0)
         val words_count = intent.getIntExtra("words_count", 0)
         val now = intent.getIntExtra("now", 0)
-        val namelist = intent.getStringArrayExtra("nameilst")
+        val namelist = intent.getStringArrayExtra("namelist")
         val wordlist = intent.getStringArrayExtra("wordlist")
 
         val messageView = findViewById<TextView>(R.id.message)
