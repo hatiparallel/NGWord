@@ -20,7 +20,7 @@ class WordsDecider {
                     val len = evacuate.size
                     for (e in 0..len-1) {
                         var changed = rand.nextInt(p*words_count)
-                        while (result[changed] > p*words_count) {
+                        while (result[changed] >= p*words_count) {
                             changed = (changed + 1) % (p*words_count)
                         }
                         arr.add(result[changed])
