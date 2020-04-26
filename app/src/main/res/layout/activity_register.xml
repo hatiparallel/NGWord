@@ -63,28 +63,35 @@
         android:textColor="@color/black"
         android:gravity="center_horizontal"
         android:text="@string/word_detail"/>
-
-    <EditText
-        android:hint="@string/constraint"
-        android:id="@+id/word_edit_text"
-        android:layout_marginLeft="24sp"
-        android:layout_marginRight="24sp"
+    <ListView
+        android:id="@+id/member_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:maxLength="10"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:shadowColor="@color/green"
         android:textSize="28sp"
         android:textColor="@color/white"
         android:background="@color/colorPrimary"
         android:text="@string/ok_button"
         android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/word_edit_text"
+        android:hint="@string/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16sp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:inputType="text"
+        android:maxLength="10"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

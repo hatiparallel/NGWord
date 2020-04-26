@@ -41,5 +41,13 @@ class WordsDecider {
         public fun getWord(wordlist: Array<String>, words_count: Int, person: Int, id: Int): String {
             return wordlist[person*words_count + id]
         }
+
+        public fun setWord(wordlist: Array<String>, words_count: Int, person: Int, id: Int, word: String) {
+            wordlist[person*words_count + id] = word
+        }
+
+        public fun getNoneWord(position: Int): String {
+            return "ワード${position + 1}"
+        }
     }
 }
