@@ -33,7 +33,8 @@
         android:textSize="28sp"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/caution"
@@ -66,7 +67,7 @@
     <ListView
         android:id="@+id/member_list_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"/>
 
     <Button
@@ -79,19 +80,38 @@
         android:textColor="@color/white"
         android:background="@color/colorPrimary"
         android:text="@string/ok_button"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:id="@+id/word_edit_text"
-        android:hint="@string/constraint"
+    <LinearLayout
+        android:id="@+id/word_decider"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16sp"
-        android:layout_marginRight="16sp"
-        android:textSize="24sp"
-        android:textColor="@color/black"
-        android:inputType="text"
-        android:maxLength="10"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/word_edit_text"
+            android:hint="@string/constraint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:maxLength="10"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/word_decide_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="@string/ok_button" />
+
+    </LinearLayout>
 
 </LinearLayout>

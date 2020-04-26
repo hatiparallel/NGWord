@@ -33,8 +33,10 @@ class RegisterActivity : AppCompatActivity() {
         val caution = findViewById<TextView>(R.id.caution)
         val okButton = findViewById<Button>(R.id.ok)
 
+        val wordDecider = findViewById<LinearLayout>(R.id.word_decider)
+
         nameEditText.setText(namelist[now])
-        wordEditText.setVisibility(View.GONE)
+        wordDecider.setVisibility(View.GONE)
 
         val listView = findViewById(R.id.member_list_view) as ListView
         val adapter = RegisterAdapter(this, words_count)
@@ -42,27 +44,51 @@ class RegisterActivity : AppCompatActivity() {
 
         val isValid = Array<Boolean>(words_count, { false })
 
+        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        nameEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
+            override fun onFocusChange(view : View?, hasFocus : Boolean) {
+                if (hasFocus) {
+                    okButton.setVisibility(View.GONE)
+                } else {
+                    imm.hideSoftInputFromWindow(view!!.getWindowToken(), 0)
+                    okButton.setVisibility(View.VISIBLE)
+                }
+            }
+        })
+
+        nameEditText.setOnKeyListener(object : OnKeyListener {
+            override fun onKey(v: View, keyCode: Int, event: KeyEvent) : Boolean {
+                Log.d("code", keyCode.toString())
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                    okButton.setVisibility(View.VISIBLE)
+                    return true
+                }
+                return true
+            }
+        })
+
         listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             okButton.setVisibility(View.GONE)
-            wordEditText.setVisibility(View.VISIBLE)
+            Log.d("btn", "hello")
+            wordDecider.setVisibility(View.VISIBLE)
             wordEditText.requestFocus()
-            val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(wordEditText, 0)
-            wordEditText.setVisibility(View.VISIBLE)
+            wordDecider.setVisibility(View.VISIBLE)
 
             if (isValid[position]) {
                 wordEditText.setText(adapter.getItem(position)!!.text, TextView.BufferType.NORMAL)
             }
 
-            wordEditText.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-                    Log.d("msg", s.toString())
-                }
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-                }
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
+            wordEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
+                override fun onFocusChange(view : View?, hasFocus : Boolean) {
+                    if (hasFocus) {
+                        okButton.setVisibility(View.GONE)
+                    } else {
+                        imm.hideSoftInputFromWindow(view!!.getWindowToken(), 0)
+                        okButton.setVisibility(View.VISIBLE)
+                    }
                 }
             })
 
@@ -73,7 +99,7 @@ class RegisterActivity : AppCompatActivity() {
                         val written = wordEditText.text
                         Log.d("text", written.toString())
                         isValid[position] = adapter.update(written.toString(), position)
-                        wordEditText.setVisibility(View.GONE)
+                        wordDecider.setVisibility(View.GONE)
                         wordEditText.clearFocus()
                         wordEditText.editableText.clear()
                         okButton.setVisibility(View.VISIBLE)
@@ -82,6 +108,17 @@ class RegisterActivity : AppCompatActivity() {
                     return false
                 }
             })
+
+            findViewById<Button>(R.id.word_decide_button).setOnClickListener {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
+                val written = wordEditText.text
+                Log.d("text", written.toString())
+                isValid[position] = adapter.update(written.toString(), position)
+                wordDecider.setVisibility(View.GONE)
+                wordEditText.clearFocus()
+                wordEditText.editableText.clear()
+                okButton.setVisibility(View.VISIBLE)
+            }
         }
 
 
