@@ -35,10 +35,10 @@ class ShowActivity : AppCompatActivity() {
                 intent = Intent(this, PlayActivity::class.java)
             } else{
                 intent = Intent(this, PrepareActivity::class.java)
+                intent.putExtra("now", (now + 1) % people_count)
             }
             intent.putExtra("people_count", people_count)
             intent.putExtra("words_count", words_count)
-            intent.putExtra("now", (now + 1) % people_count)
             intent.putExtra("namelist", namelist)
             intent.putExtra("wordlist", wordlist)
             intent.putExtra("shuffle", shuffle)
