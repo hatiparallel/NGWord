@@ -108,7 +108,7 @@
         android:layout_height="wrap_content"
         android:text="@string/start_button"
         android:textSize="32sp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:text="@string/howto_button"
         android:textSize="32sp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"/>
 
