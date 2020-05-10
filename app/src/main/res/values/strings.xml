@@ -32,4 +32,5 @@
     <string name="word_detail">相手のNGワードに指定する単語を入力してください。\n空白の場合、デフォルトの単語から選ばれます。</string>
 
     <string name="constraint">10文字以内で入力</string>
+    <string name="name_edit">名前を入力</string>
 </resources>

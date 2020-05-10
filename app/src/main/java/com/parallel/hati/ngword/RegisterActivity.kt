@@ -14,6 +14,15 @@ import android.view.View.OnKeyListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 
+private fun fillNameText(textView : TextView, name : String) {
+    if (name.isNotEmpty()) {
+        textView.setTextColor(Color.BLACK)
+        textView.setText(name)
+    } else {
+        textView.setTextColor(Color.GRAY)
+        textView.setText(R.string.name_edit)
+    }
+}
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -28,15 +37,15 @@ class RegisterActivity : AppCompatActivity() {
         val namelist = intent.getStringArrayExtra("namelist")
         val wordlist = intent.getStringArrayExtra("wordlist")
 
-        val nameEditText = findViewById<EditText>(R.id.name_edit_text)
-        val wordEditText = findViewById<EditText>(R.id.word_edit_text)
+        val nameText = findViewById<TextView>(R.id.name_text)
+        val inputEditText = findViewById<EditText>(R.id.input_edit_text)
         val caution = findViewById<TextView>(R.id.caution)
         val okButton = findViewById<Button>(R.id.ok)
 
-        val wordDecider = findViewById<LinearLayout>(R.id.word_decider)
+        val inputDecider = findViewById<LinearLayout>(R.id.input_decider)
 
-        nameEditText.setText(namelist[now])
-        wordDecider.setVisibility(View.GONE)
+        fillNameText(nameText, namelist[now])
+        inputDecider.setVisibility(View.GONE)
 
         val listView = findViewById(R.id.member_list_view) as ListView
         val adapter = RegisterAdapter(this, words_count)
@@ -44,9 +53,67 @@ class RegisterActivity : AppCompatActivity() {
 
         val isValid = Array<Boolean>(words_count, { false })
 
+        var typing = false
+
         val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-        nameEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
+        nameText.setOnClickListener {
+            if (typing) {
+                return@setOnClickListener
+            }
+            typing = true
+
+            okButton.setVisibility(View.GONE)
+
+            inputDecider.setVisibility(View.VISIBLE)
+            inputEditText.requestFocus()
+            imm.showSoftInput(inputEditText, 0)
+            inputDecider.setVisibility(View.VISIBLE)
+
+            if (namelist[now].isNotEmpty()) {
+                inputEditText.setText(namelist[now], TextView.BufferType.NORMAL)
+            }
+
+            inputEditText.setOnKeyListener(object : OnKeyListener {
+                override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
+                    if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+
+                        val written = inputEditText.text.toString()
+                        fillNameText(nameText, written)
+                        namelist[now] = written
+
+                        inputDecider.setVisibility(View.GONE)
+                        inputEditText.clearFocus()
+                        inputEditText.editableText.clear()
+
+                        okButton.setVisibility(View.VISIBLE)
+                        typing = false
+                        return true
+                    }
+                    return false
+                }
+            })
+
+            findViewById<Button>(R.id.input_decide_button).setOnClickListener {
+                imm.hideSoftInputFromWindow(it.getWindowToken(), 0)
+
+                val written = inputEditText.text.toString()
+                fillNameText(nameText, written)
+                namelist[now] = written
+
+                inputDecider.setVisibility(View.GONE)
+                inputEditText.clearFocus()
+                inputEditText.editableText.clear()
+
+                okButton.setVisibility(View.VISIBLE)
+                typing = false
+            }
+        }
+
+        /*
+
+        inputEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
             override fun onFocusChange(view : View?, hasFocus : Boolean) {
                 if (hasFocus) {
                     okButton.setVisibility(View.GONE)
@@ -57,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
-        nameEditText.setOnKeyListener(object : OnKeyListener {
+        inputEditText.setOnKeyListener(object : OnKeyListener {
             override fun onKey(v: View, keyCode: Int, event: KeyEvent) : Boolean {
                 Log.d("code", keyCode.toString())
                 if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
@@ -69,19 +136,27 @@ class RegisterActivity : AppCompatActivity() {
             }
         })
 
+         */
+
         listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            if (typing) {
+                return@OnItemClickListener
+            }
+            typing = true
+
             okButton.setVisibility(View.GONE)
-            Log.d("btn", "hello")
-            wordDecider.setVisibility(View.VISIBLE)
-            wordEditText.requestFocus()
-            imm.showSoftInput(wordEditText, 0)
-            wordDecider.setVisibility(View.VISIBLE)
+
+            inputDecider.setVisibility(View.VISIBLE)
+            inputEditText.requestFocus()
+            imm.showSoftInput(inputEditText, 0)
+            inputDecider.setVisibility(View.VISIBLE)
 
             if (isValid[position]) {
-                wordEditText.setText(adapter.getItem(position)!!.text, TextView.BufferType.NORMAL)
+                inputEditText.setText(adapter.getItem(position)!!.text, TextView.BufferType.NORMAL)
             }
 
-            wordEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
+            /*
+            inputEditText.setOnFocusChangeListener(object : View.OnFocusChangeListener {
                 override fun onFocusChange(view : View?, hasFocus : Boolean) {
                     if (hasFocus) {
                         okButton.setVisibility(View.GONE)
@@ -91,41 +166,47 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
             })
+             */
 
-            wordEditText.setOnKeyListener(object : OnKeyListener {
+            inputEditText.setOnKeyListener(object : OnKeyListener {
                 override fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
                     if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                         imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
-                        val written = wordEditText.text
-                        Log.d("text", written.toString())
+
+                        val written = inputEditText.text
                         isValid[position] = adapter.update(written.toString(), position)
-                        wordDecider.setVisibility(View.GONE)
-                        wordEditText.clearFocus()
-                        wordEditText.editableText.clear()
+
+                        inputDecider.setVisibility(View.GONE)
+                        inputEditText.clearFocus()
+                        inputEditText.editableText.clear()
+
                         okButton.setVisibility(View.VISIBLE)
+                        typing = false
+
                         return true
                     }
                     return false
                 }
             })
 
-            findViewById<Button>(R.id.word_decide_button).setOnClickListener {
+            findViewById<Button>(R.id.input_decide_button).setOnClickListener {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
-                val written = wordEditText.text
-                Log.d("text", written.toString())
+
+                val written = inputEditText.text
                 isValid[position] = adapter.update(written.toString(), position)
-                wordDecider.setVisibility(View.GONE)
-                wordEditText.clearFocus()
-                wordEditText.editableText.clear()
+
+                inputDecider.setVisibility(View.GONE)
+                inputEditText.clearFocus()
+                inputEditText.editableText.clear()
+
                 okButton.setVisibility(View.VISIBLE)
+                typing = false
             }
         }
 
 
         okButton.setOnClickListener {
-            if (nameEditText.getText().isNotEmpty()) {
-                namelist[now] = nameEditText.getText().toString()
-            } else {
+            if (namelist[now].isEmpty()) {
                 caution.setTextColor(Color.RED)
                 return@setOnClickListener
             }
@@ -139,10 +220,12 @@ class RegisterActivity : AppCompatActivity() {
 
             if (now == people_count - 1) {
                 intent = Intent(this, PrepareActivity::class.java)
+                Log.d("qk", "bef")
                 intent.putExtra("shuffle", WordsDecider.shuffleNumber(people_count, words_count));
             } else {
                 intent = Intent(this, RegisterActivity::class.java)
             }
+            Log.d("qk", "aft")
 
             intent.putExtra("people_count", people_count)
             intent.putExtra("words_count", words_count)
