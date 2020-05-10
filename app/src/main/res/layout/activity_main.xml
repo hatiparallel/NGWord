@@ -104,24 +104,12 @@
 
     <Button
         android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_button"
-        android:textSize="32sp"
-        android:background="@drawable/rounded_button"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        style="@style/RegularButton"
+        android:text="@string/start_button" />
 
     <Button
         android:id="@+id/howto_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/howto_button"
-        android:textSize="32sp"
-        android:background="@drawable/rounded_button"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"/>
+        style="@style/RegularButton"
+        android:text="@string/howto_button" />
 
 </LinearLayout>

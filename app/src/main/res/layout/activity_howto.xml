@@ -46,13 +46,7 @@
 
     <Button
         android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
-        android:text="@string/back_button"
-        android:textSize="32sp"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"/>
+        style="@style/RegularButton"
+        android:text="@string/back_button" />
 
 </LinearLayout>
