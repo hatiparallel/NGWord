@@ -12,20 +12,22 @@ class FinishActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish)
 
-        val number = intent.getIntExtra("number", 0)
         val shuffle = intent.getIntArrayExtra("shuffle")
-        val names = intent.getStringArrayExtra("names")
-        val words = intent.getStringArrayExtra("words")
+        val people_count = intent.getIntExtra("people_count", 0)
+        val words_count = intent.getIntExtra("words_count", 0)
+        val namelist = intent.getStringArrayExtra("namelist")
+        val wordlist = intent.getStringArrayExtra("wordlist")
 
         val listView = findViewById(R.id.member_list_view) as ListView
-        val adapter = FinishAdapter(this, names, words, shuffle)
+        val adapter = FinishAdapter(this, words_count, namelist, wordlist, shuffle)
         listView.adapter = adapter
 
         findViewById<Button>(R.id.restart_button).setOnClickListener {
             intent = Intent(this, RegisterActivity::class.java)
-            intent.putExtra("number", number)
-            intent.putExtra("names", names)
-            intent.putExtra("words", WordsDecider.chooseDefaultWords(number))
+            intent.putExtra("people_count", people_count)
+            intent.putExtra("words_count", words_count)
+            intent.putExtra("namelist", namelist)
+            intent.putExtra("wordlist", WordsDecider.chooseDefaultWords(people_count*words_count))
             intent.putExtra("now", 0)
             startActivity(intent)
         }

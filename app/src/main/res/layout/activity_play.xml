@@ -14,14 +14,7 @@
 
     <Button
         android:id="@+id/finish_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/finish_button"
-        android:textSize="32sp"
-        android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="24dp"/>
+        style="@style/RegularButton"
+        android:text="@string/finish_button" />
 
 </LinearLayout>

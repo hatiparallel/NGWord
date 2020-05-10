@@ -14,22 +14,23 @@ class PlayActivity : AppCompatActivity() {
         setContentView(R.layout.activity_play)
 
         val shuffle : IntArray = intent.getIntArrayExtra("shuffle")
-        val number = intent.getIntExtra("number", 0)
-        val now = intent.getIntExtra("now", 0)
-        val names = intent.getStringArrayExtra("names")
-        val words = intent.getStringArrayExtra("words")
+        val people_count = intent.getIntExtra("people_count", 0)
+        val words_count = intent.getIntExtra("words_count", 0)
+        val namelist = intent.getStringArrayExtra("namelist")
+        val wordlist = intent.getStringArrayExtra("wordlist")
 
         val listView = findViewById(R.id.member_list_view) as ListView
-        val adapter = PlayAdapter(this, names)
+        val adapter = PlayAdapter(this, namelist)
         listView.adapter = adapter
         listView.onItemClickListener = OnItemClickListener { parent, view, position, id ->
             intent = Intent(this, ShowActivity::class.java)
             intent.putExtra("shuffle", shuffle)
-            intent.putExtra("number", number)
+            intent.putExtra("people_count", people_count)
+            intent.putExtra("words_count", words_count)
             intent.putExtra("now", position)
             intent.putExtra("playing", true)
-            intent.putExtra("names", names)
-            intent.putExtra("words", words)
+            intent.putExtra("namelist", namelist)
+            intent.putExtra("wordlist", wordlist)
             startActivity(intent)
         }
 
@@ -37,9 +38,10 @@ class PlayActivity : AppCompatActivity() {
         findViewById<Button>(R.id.finish_button).setOnClickListener {
             intent = Intent(this, FinishActivity::class.java)
             intent.putExtra("shuffle", shuffle)
-            intent.putExtra("number", number)
-            intent.putExtra("names", names)
-            intent.putExtra("words", words)
+            intent.putExtra("people_count", people_count)
+            intent.putExtra("words_count", words_count)
+            intent.putExtra("namelist", namelist)
+            intent.putExtra("wordlist", wordlist)
             startActivity(intent)
         }
     }

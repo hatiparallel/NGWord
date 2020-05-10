@@ -9,14 +9,22 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 
-class FinishAdapter(context : Context, names : Array<String>, words : Array<String>, shuffle : IntArray) : BaseAdapter() {
-    val names = names
-    val words = words
+class FinishAdapter(context : Context, words_count : Int, namelist : Array<String>, wordlist : Array<String>, shuffle : IntArray) : BaseAdapter() {
+    val words_count = words_count
+    val namelist = namelist
+    val wordlist = wordlist
     val shuffle = shuffle
     private val mInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override public fun getItem(position : Int) : Pair<String, String> {
-        return Pair(names[position], words[shuffle[position]])
+        var word_rtn = ""
+        for (w in 0..words_count - 1) {
+            if (w != 0) {
+                word_rtn += "・"
+            }
+            word_rtn += wordlist[shuffle[position*words_count + w]]
+        }
+        return Pair(namelist[position], word_rtn)
     }
 
     override public fun getItemId(position: Int): Long {
@@ -24,7 +32,7 @@ class FinishAdapter(context : Context, names : Array<String>, words : Array<Stri
     }
 
     override public fun getCount() : Int {
-        return names.size
+        return namelist.size
     }
     override public fun getView(position : Int, view : View?, parent : ViewGroup): View {
         var view = view
