@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">NGワード</string>
+    <string name="app_name">カスタムNGワード</string>
+    <string name="app_name_short">カスタムNG</string>
 
     <string name="howto_main">NGワードは，お互いが自分のNGワードだけ知らない状況で，相手にNGワードを言わせるように会話を展開するゲームです．先に自分のNGワードを言ってしまった人が負けになります．このアプリでは，ワード数を5個まで自由に設定できます．\n</string>
     <string name="howto_detail">1. 参加人数と設定するワードの数を決めてください．\n\n2. それぞれのプレイヤーが順番に，自分の名前と相手に設定したいNGワードを決めます．このとき画面は他の人に見せないでください．設定したワードは，自分以外の誰かのNGワードになります．また，NGワードは入力しなかった場合デフォルトのワードから自動で選ばれます．\n\n3. 全員のNGワードが順番に表示されます．自分のものは見ないようにし，相手のNGワードを覚えてください．\n\n4. ゲーム開始です．自分のNGワードを予想して言わないようにしながら，相手にNGワードを言わせましょう．ゲーム中に相手のNGワードを忘れた場合は再度表示することができます．\n\n5. ゲーム終了後，全員のNGワードが表示されます．「もう一度」を選んだ場合，同じメンバーでワードを設定しなおすことができます．</string>
@@ -13,7 +14,7 @@
     <string name="default_people_count">" 3人 "</string>
     <string name="default_words_count">" 1個 "</string>
 
-    <string name="main_description">人数と単語数を選択してから\n「ゲーム開始」を押してください．</string>
+    <string name="main_description">人数と単語数を選択してから\n「始める」を押してください．</string>
 
     <string name="decide_button">" 確定 "</string>
 

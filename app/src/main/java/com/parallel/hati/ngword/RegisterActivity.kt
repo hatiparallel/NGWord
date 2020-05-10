@@ -220,12 +220,10 @@ class RegisterActivity : AppCompatActivity() {
 
             if (now == people_count - 1) {
                 intent = Intent(this, PrepareActivity::class.java)
-                Log.d("qk", "bef")
                 intent.putExtra("shuffle", WordsDecider.shuffleNumber(people_count, words_count));
             } else {
                 intent = Intent(this, RegisterActivity::class.java)
             }
-            Log.d("qk", "aft")
 
             intent.putExtra("people_count", people_count)
             intent.putExtra("words_count", words_count)
