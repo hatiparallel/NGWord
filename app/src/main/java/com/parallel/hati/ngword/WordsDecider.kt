@@ -1,5 +1,6 @@
 package com.parallel.hati.ngword
 
+import android.util.Log
 import java.util.*
 
 class WordsDecider {
@@ -13,15 +14,18 @@ class WordsDecider {
             val rand = Random()
 
             for (p in 0..people_count - 1) {
-                while (arr.size > 0 && arr[0] < (p + 1)*words_count) {
+                while (arr.size > 0 && arr[0] < (p + 1)*words_count && arr[0] >= p*words_count) {
                     evacuate.add(arr.removeAt(0))
                 }
+                Log.d("qk", p.toString())
                 if (p == people_count - 1) {
                     val len = evacuate.size
                     for (e in 0..len-1) {
                         var changed = rand.nextInt(p*words_count)
                         while (result[changed] >= p*words_count) {
                             changed = (changed + 1) % (p*words_count)
+                            Log.d("qk", changed.toString())
+                            Log.d("qk", result[changed].toString())
                         }
                         arr.add(result[changed])
                         result[changed] = evacuate.removeAt(0)
@@ -33,6 +37,7 @@ class WordsDecider {
                 while (evacuate.size > 0) {
                     arr.add(evacuate.removeAt(0))
                 }
+                Log.d("qk", p.toString())
             }
 
             return result.toIntArray()
